@@ -1,0 +1,24 @@
+# Environment variables
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+build/
+dist/
+
+# Databases
+*.sqlite3
+*.db
+
+# Docker
+.dockerignore (optional, usually kept)
+data/ (if you map Docker database volumes here)
+
+# IDEs
+.vscode/
+.idea/
+/venv
