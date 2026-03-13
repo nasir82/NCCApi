@@ -22,3 +22,4 @@ data/ (if you map Docker database volumes here)
 .vscode/
 .idea/
 /venv
+.env
