@@ -5,21 +5,39 @@ from .models import models
 from .router import banner_router, student_router, user_router, attendance_router
 from .database.database import engine
 
+
+from contextlib import asynccontextmanager
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    models.Base.metadata.create_all(bind=engine)
+    yield
+
 app = FastAPI(
     title="NCC Management System API",
-    description="""
-This API handles all internal operations for NCC, including:
-* **Attendance Tracking** for students.
-* **Payment Management** for fees and records.
-* **Exam & Resource** distribution.
-    """,
+    description="""...""",
     version="1.0.1",
+    lifespan=lifespan,
     contact={
         "name": "NCC Support",
         "email": "nasirpks36@gmail.com",
     },
 )
-models.Base.metadata.create_all (bind= engine)
+# app = FastAPI(
+#     title="NCC Management System API",
+#     description="""
+# This API handles all internal operations for NCC, including:
+# * **Attendance Tracking** for students.
+# * **Payment Management** for fees and records.
+# * **Exam & Resource** distribution.
+#     """,
+#     version="1.0.1",
+#     contact={
+#         "name": "NCC Support",
+#         "email": "nasirpks36@gmail.com",
+#     },
+# )
+# models.Base.metadata.create_all (bind= engine)
 
 origins = ["*"]
 app.add_middleware(
@@ -66,7 +84,7 @@ if __name__ == "__main__":
 """To run the FastAPI application, use the following command in your terminal:
     uvicorn main:app --host 0.0.0.0 --port 8000
     with auto reload on code changes, add the --reload flag:
-    uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+    uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 
 """
 
