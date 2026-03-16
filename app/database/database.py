@@ -4,8 +4,8 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 
-SQLALCHEMY_DATABASE_URL = f'postgresql://{settings.database_username}:{settings.database_password}@{settings.database_hostname}:{settings.database_port}/{settings.database_name}'
-
+# SQLALCHEMY_DATABASE_URL = f'postgresql://{settings.database_username}:{settings.database_password}@{settings.database_hostname}:{settings.database_port}/{settings.database_name}'
+SQLALCHEMY_DATABASE_URL = 'postgresql://postgres:NtzzBAYQSXrEAJRwLuKYxRtwkYbXKXSx@interchange.proxy.rlwy.net:49581/railway'
 # using create engine method creating an engine object to handle the database connection
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 # creating a session local class to handle the database sessions
