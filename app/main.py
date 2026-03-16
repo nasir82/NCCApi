@@ -1,12 +1,25 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.router import administration_router, event_router, exam_rounter, office_router, payment_router, resource_router, teachers_router
+
+from .router import (
+    administration_router,
+    event_router,
+    exam_rounter,
+    office_router,
+    payment_router,
+    resource_router,
+    teachers_router,
+    banner_router,
+    student_router,
+    user_router,
+    attendance_router
+)
+
 from .models import models
-from .router import banner_router, student_router, user_router, attendance_router
 from .database.database import engine
 
-
 from contextlib import asynccontextmanager
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
